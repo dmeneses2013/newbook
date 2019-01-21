@@ -1,0 +1,23 @@
+<h1>This is book show</h1>
+
+<div class="list-group search-results">
+
+<% @items.each do |item| %>
+ <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action">
+  <%= image_tag item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+  <%= item["volumeInfo"]["title"] %>
+  <% if item["searchInfo"].present? %>
+    <%= item["searchInfo"]["textSnippet"] %>
+    <% else %>
+    <%='No description available' %>
+   <% end %>
+  <% if item["volumeInfo"]["authors"].present? %>
+    <% item["volumeInfo"]["authors"].each do |author| %>
+      <%= author %>
+      <% end %>
+  <% end %>
+</a>
+
+<% end %>
+
+</div>

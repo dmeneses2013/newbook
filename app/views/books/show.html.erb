@@ -1,0 +1,21 @@
+
+<div class="search-results">
+  <h1>This is book show page</h1>
+
+<%= @response["volumeInfo"]["title"] %>
+<%= @response["volumeInfo"]["subtitle"] if @response["volumeInfo"]["subtitle"].present? %>
+<%= image_tag @response["volumeInfo"]["imageLinks"]["thumbnail"] if  @response["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+
+<% if @response["volumeInfo"]["authors"].present? %>
+  <% @response["volumeInfo"]["authors"].each do |author| %>
+    <%= author %>
+    <% end %>
+  <% end %>
+
+  <%= @response["volumeInfo"]["description"] if  @response["volumeInfo"]["description"].present? %>
+  <%= @response["volumeInfo"]["language"] if  @response["volumeInfo"]["language"].present? %>
+
+
+  <%= @response["volumeInfo"]["publisher"] if  @response["volumeInfo"]["publisher"].present? %>
+  <%= @response["volumeInfo"]["publishedDate"] if  @response["volumeInfo"]["publishedDate"].present? %>
+</div>
