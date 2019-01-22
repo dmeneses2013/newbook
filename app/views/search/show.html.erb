@@ -4,7 +4,7 @@
 
 <% @items.each do |item| %>
  <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action">
-  <%= image_tag item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+  <%= image_tag item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present? %>
   <%= item["volumeInfo"]["title"] %>
   <% if item["searchInfo"].present? %>
     <%= item["searchInfo"]["textSnippet"] %>

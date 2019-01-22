@@ -16,7 +16,12 @@
         <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         Bootstrap
       </a>
-
+      <% if @current_user.present? %>
+        <%= link_to "Sign Out #{ @current_user.email }", login_path, :method => 'delete' %>
+      <% else %>
+        <%= @current_user %>
+        <%= link_to @current_user, new_user_path %>
+      <% end %>
       </nav>
     <%= yield %>
   </body>

@@ -5,4 +5,12 @@ class BooksController < ApplicationController
     @response = HTTParty.get url
    end
 
+   def create
+     if @current_user.present?
+
+     else
+
+     end
+   end
+
 end

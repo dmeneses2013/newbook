@@ -14,7 +14,6 @@ class SearchController < ApplicationController
     response = HTTParty.get url
     @cover = response["items"][0]["volumeInfo"]["imageLinks"]["thumbnail"]
     @items = response["items"]
-
   end
 
   def edit
