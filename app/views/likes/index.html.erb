@@ -1,0 +1,21 @@
+
+<% @books.each do |book| %>
+<%= book.title if book.title.present? %>
+<%= image_tag book.cover if book.cover.present?  %>
+<%= form_tag("/likes", method: "delete") do %>
+  <%= hidden_field_tag(:google_id, book.google_id) %>
+  <%= submit_tag("Remove from list") %>
+<% end %>
+<%end %>
+
+
+
+  <% @current_user.recommend_books.each do |key, value| %>
+  <tr>
+    <td><%= key.title %></td>
+    <td><%= value.round(2) %></td>
+  </tr>
+  <% end %>
+
+
+<%= link_to "Sign out", login_path, :method => 'delete' %>

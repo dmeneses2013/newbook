@@ -21,4 +21,7 @@
 </div>
 
 
-<button type="button" name="button" action="">Like</button>
+<%= form_tag("/likes", method: "post") do %>
+  <%= hidden_field_tag(:google_id, @response['id']) %>
+  <%= submit_tag("Add to list") %>
+<% end %>
