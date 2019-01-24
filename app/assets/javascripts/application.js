@@ -13,9 +13,7 @@
 //= require activestorage
 //= require_tree .
 
-//= require popper
 //= require bootstrap
-//= require jquery
 //= require jquery_ujs
 
 $(document).ready(function() {
