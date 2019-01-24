@@ -11,9 +11,11 @@
 // about supported directives.
 //
 //= require activestorage
+//= require jquery3
+//= require popper
 //= require_tree .
-
 //= require bootstrap
+//= require jquery
 //= require jquery_ujs
 
 $(document).ready(function() {
