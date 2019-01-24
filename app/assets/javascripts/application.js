@@ -10,10 +10,23 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require rails-ujs
 //= require activestorage
 //= require_tree .
 
 //= require jquery3
 //= require popper
 //= require bootstrap
+//= require jquery
+//= require jquery_ujs 
+
+$(document).ready(function() {
+
+  $('like-image').on('hover', function() {
+    $('.text').text('The text you want to appear');
+  });
+
+  $('.recommended-container-2').mouseenter(function(){
+    alert("The paragraph was clicked.");
+  });
+
+})

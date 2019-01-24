@@ -15,12 +15,13 @@
       <%= link_to root_path do %>
          <%= image_tag "bookimage.png", class: "navbar-brand" %>
       <% end %>
-        Newbook
+        <div class="nav-title">
+          Newbook
+        </div>
       <% if @current_user.present? %>
         <%= link_to 'Account', likes_path, :method => 'get', :class => 'navbar-link' %>
       <% else %>
-        <%= @current_user %>
-        <%= link_to @current_user, new_user_path, :class => 'navbar-link'  %>
+        <%= link_to 'Log In', new_user_path, :class => 'navbar-link'  %>
       <% end %>
       </nav>
     <%= yield %>

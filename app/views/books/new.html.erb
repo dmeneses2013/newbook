@@ -1,27 +1,30 @@
 
-<div class="search-results">
-  <h1>This is book show page</h1>
+<div class="book-profile center">
 
-<%= @response["volumeInfo"]["title"] %>
-<%= @response["volumeInfo"]["subtitle"] if @response["volumeInfo"]["subtitle"].present? %>
-<%= image_tag @response["volumeInfo"]["imageLinks"]["thumbnail"] if  @response["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+<%= image_tag @response["volumeInfo"]["imageLinks"]["thumbnail"], :class => 'book-image' if  @response["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+<h1 class="book-profile-title"><%= @response["volumeInfo"]["title"]%></h1>
+<h3 class="book-profile-subtitle"><%= @response["volumeInfo"]["subtitle"] if @response["volumeInfo"]["subtitle"].present? %></h3>
+
 
 <% if @response["volumeInfo"]["authors"].present? %>
   <% @response["volumeInfo"]["authors"].each do |author| %>
-    <%= author %>
+    <div class="book-profile-author"><%= author %></div>
     <% end %>
   <% end %>
 
-  <%= @response["volumeInfo"]["description"] if  @response["volumeInfo"]["description"].present? %>
-  <%= @response["volumeInfo"]["language"] if  @response["volumeInfo"]["language"].present? %>
+  <div class="book-profile-publisher">
+    <%= @response["volumeInfo"]["publisher"] if  @response["volumeInfo"]["publisher"].present? %>
+    <%= @response["volumeInfo"]["publishedDate"] if  @response["volumeInfo"]["publishedDate"].present? %>
+      </div>
+<div class="book-description">
+  <%= sanitize @response["volumeInfo"]["description"] if  @response["volumeInfo"]["description"].present? %>
+  </div>
 
 
-  <%= @response["volumeInfo"]["publisher"] if  @response["volumeInfo"]["publisher"].present? %>
-  <%= @response["volumeInfo"]["publishedDate"] if  @response["volumeInfo"]["publishedDate"].present? %>
-</div>
 
-
-<%= form_tag("/likes", method: "post") do %>
+<%= form_tag("/likes", method: "post", class: 'book-profile-like') do %>
   <%= hidden_field_tag(:google_id, @response['id']) %>
   <%= submit_tag("Add to list") %>
 <% end %>
+
+</div>

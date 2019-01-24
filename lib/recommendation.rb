@@ -17,6 +17,6 @@ module Recommendation
       end
     end
     # sort by weight in descending order
-    sorted_recommended = recommended.sort_by { |key, value| value }.reverse
+    sorted_recommended = recommended.sort_by { |key, value| value }[0..6]
   end
 end

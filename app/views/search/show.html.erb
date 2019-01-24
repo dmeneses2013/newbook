@@ -1,21 +1,29 @@
-<h1>This is book show</h1>
-
-<div class="list-group search-results">
+<div class="list-group search-results center">
 
 <% @items.each do |item| %>
- <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action">
+ <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action search-results-book">
   <%= image_tag item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present? %>
-  <%= item["volumeInfo"]["title"] %>
+  <div class="search-results-title">
+    <%= item["volumeInfo"]["title"] %>
+    <div class="search-results-author">
+      <% if item["volumeInfo"]["authors"].present? %>
+        <% item["volumeInfo"]["authors"].each do |author| %>
+          <%= author %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="search-results-publisher">
+        <%= item["volumeInfo"]["publisher"] %>
+        <%= item["volumeInfo"]["publishedDate"] %>
+    </div>
+      </div>
+  <div class="search-results-snippet">
   <% if item["searchInfo"].present? %>
-    <%= sanitize item["searchInfo"]["textSnippet"] %>
+    <%= sanitize item["searchInfo"]["textSnippet"], :class => 'book-description'  %>
     <% else %>
     <%='No description available' %>
    <% end %>
-  <% if item["volumeInfo"]["authors"].present? %>
-    <% item["volumeInfo"]["authors"].each do |author| %>
-      <%= author %>
-      <% end %>
-  <% end %>
+   </div>
 </a>
 
 <% end %>

@@ -13,11 +13,12 @@ class LikesController < ApplicationController
     book = Book.find_by(google_id: params[:google_id])
     @current_user.books.delete(book)
     @books = @current_user.books
-    render :index
+    redirect_to likes_path
   end
 
   def index
     @books = @current_user.books
+    @recommended = Book
   end
 
   private

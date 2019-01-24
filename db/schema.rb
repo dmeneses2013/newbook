@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_004341) do
   create_table "likes", force: :cascade do |t|
     t.integer "user_id"
     t.integer "book_id"
+    t.integer "author_id"
   end
 
   create_table "users", force: :cascade do |t|

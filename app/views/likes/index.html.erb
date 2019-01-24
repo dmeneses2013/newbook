@@ -1,21 +1,30 @@
 
+<h3 class="grid-title">Bookshelf</h3>
+<div class="grid-book-container center">
+
 <% @books.each do |book| %>
-<%= book.title if book.title.present? %>
-<%= image_tag book.cover if book.cover.present?  %>
+<div class='grid-book-item'>
+<%= image_tag book.cover if book.cover.present? %>
 <%= form_tag("/likes", method: "delete") do %>
   <%= hidden_field_tag(:google_id, book.google_id) %>
-  <%= submit_tag("Remove from list") %>
+  <%= submit_tag("Remove book") %>
 <% end %>
+</div>
+
 <%end %>
+</div>
 
 
-
+  <h3 class="grid-title">Recommendations</h3>
+<div class="grid-book-container recommended center">
   <% @current_user.recommend_books.each do |key, value| %>
-  <tr>
-    <td><%= key.title %></td>
-    <td><%= value.round(2) %></td>
-  </tr>
+  <div class="grid-book-item">
+    <% book = @recommended.find_by(title: key.title) %>
+    <a href="books/<%= book.google_id %>">
+    <%= image_tag book.cover %>
+        </a>
+          </div>
   <% end %>
+</div>
 
-
-<%= link_to "Sign out", login_path, :method => 'delete' %>
+  <%= link_to "Sign out", '/login', :method => 'delete' %>
