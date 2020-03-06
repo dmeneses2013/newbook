@@ -1,21 +1,21 @@
 
 <div class="book-profile center">
 
-<%= image_tag @response["volumeInfo"]["imageLinks"]["thumbnail"], :class => 'book-image' if  @response["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
-<h1 class="book-profile-title"><%= @response["volumeInfo"]["title"]%></h1>
-<h3 class="book-profile-subtitle"><%= @response["volumeInfo"]["subtitle"] if @response["volumeInfo"]["subtitle"].present? %></h3>
+<%= image_tag @response["volumeInfo"]["imageLinks"]["thumbnail"] if  @response["volumeInfo"]["imageLinks"]["thumbnail"].present? %>
+<h1><%= @response["volumeInfo"]["title"]%></h1>
+<h2><%= @response["volumeInfo"]["subtitle"] if @response["volumeInfo"]["subtitle"].present? %></h2>
 
 
 <% if @response["volumeInfo"]["authors"].present? %>
   <% @response["volumeInfo"]["authors"].each do |author| %>
-    <div class="book-profile-author"><%= author %></div>
+    <h4><%= author %></h4>
     <% end %>
   <% end %>
 
-  <div class="book-profile-publisher">
+  <h6>
     <%= @response["volumeInfo"]["publisher"] if  @response["volumeInfo"]["publisher"].present? %>
     <%= @response["volumeInfo"]["publishedDate"] if  @response["volumeInfo"]["publishedDate"].present? %>
-      </div>
+      </h6>
 <div class="book-description">
   <%= sanitize @response["volumeInfo"]["description"] if  @response["volumeInfo"]["description"].present? %>
   </div>

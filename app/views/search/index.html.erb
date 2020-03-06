@@ -1,8 +1,7 @@
-<h1>Search Index</h1>
-
-
+<div class="search-field center">
+  <h1>Search Index</h1>
 <%= form_tag("/search", method: "get") do %>
-  <%= label_tag(:q, "Search for:") %>
   <%= text_field_tag(:q) %>
   <%= submit_tag("Search") %>
 <% end %>
+</div>

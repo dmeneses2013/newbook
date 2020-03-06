@@ -5,7 +5,7 @@
 <% @books.each do |book| %>
 <div class='grid-book-item'>
 <%= image_tag book.cover if book.cover.present? %>
-<%= form_tag("/likes", method: "delete") do %>
+<%= button_to("/likes", method: "delete") do %>
   <%= hidden_field_tag(:google_id, book.google_id) %>
   <%= submit_tag("Remove book") %>
 <% end %>
@@ -16,7 +16,7 @@
 
 
   <h3 class="grid-title">Recommendations</h3>
-<div class="grid-book-container recommended center">
+<div class="grid-book-container three-columns center">
   <% @current_user.recommend_books.each do |key, value| %>
   <div class="grid-book-item">
     <% book = @recommended.find_by(title: key.title) %>

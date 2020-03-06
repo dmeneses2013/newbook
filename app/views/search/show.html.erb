@@ -1,9 +1,8 @@
-<div class="list-group search-results center">
-
-<% @items.each do |item| %>
- <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action search-results-book">
+<div class="list-group search-result center">
+  <% @items.each do |item| %>
+ <a href="/books/<%= item["id"] %>" class="list-group-item list-group-item-action">
   <%= image_tag item["volumeInfo"]["imageLinks"]["thumbnail"] if item["volumeInfo"]["imageLinks"].present? %>
-  <div class="search-results-title">
+  <div class="search-result-title">
     <%= item["volumeInfo"]["title"] %>
     <div class="search-results-author">
       <% if item["volumeInfo"]["authors"].present? %>
@@ -17,13 +16,13 @@
         <%= item["volumeInfo"]["publishedDate"] %>
     </div>
       </div>
-  <div class="search-results-snippet">
+  <p class="search-result">
   <% if item["searchInfo"].present? %>
     <%= sanitize item["searchInfo"]["textSnippet"], :class => 'book-description'  %>
     <% else %>
     <%='No description available' %>
    <% end %>
-   </div>
+   </p>
 </a>
 
 <% end %>

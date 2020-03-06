@@ -1,25 +1,21 @@
-# README
+# New Book
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+- Ruby on Rails
+- PostgresSQL
+- Google Books API
 
-Things you may want to cover:
+## Requirements
 
-* Ruby version
+Ruby on Rails with Postgres
+https://www.digitalocean.com/community/tutorials/how-to-set-up-ruby-on-rails-with-postgres
 
-* System dependencies
+## Steps
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# newbook
+```
+# go to root directory
+$ cd /new_book
+# setup db
+$ rake db:setup
+# run
+$ rails s
+```
